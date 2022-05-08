@@ -19,63 +19,68 @@
 %
 % 第一章节
 
-\chapter{一级题目}
+\chapter{绪论}
 
-\section{二级题目}
+\section{研究背景与意义}
 % 这里插入一个参考文献，仅作参考
-正文……\cite{yuFeiJiZongTiDuoXueKeSheJiYouHuaDeXianZhuangYuFaZhanFangXiang2008}
+% 正文……\cite{yuFeiJiZongTiDuoXueKeSheJiYouHuaDeXianZhuangYuFaZhanFangXiang2008}
+自动驾驶系统的决策模块需要先进的决策算法保证安全性、智能性、有效性。目前传统算法的解决思路是以价格昂贵的激光雷达作为主要传感器，依靠人工设计的算法从复杂环境中提取关键信息, 根据这些信息进行决策和判断。该算法缺乏一定的泛化能力，不具备应有的智能性和通用性。深度强化学习的出现有效地改善了传统算法泛化性不足的问题, 这给智能驾驶领域带来新的思路。
 
-\subsection{三级题目}
+目前，强化学习在策略选择的理论和算法方面已经取得了很大的进步，然而直接从高维感知输入（如图像、语音等）中提取特征，学习最优策略，对强化学习来说依然是一个挑战。
 
-正文……\cite{Hajela2012Application}
+深度强化学习(Deep Reinforcement Learning, DRL)结合了深度神经网络和强化学习的优势, 可以用于解决智能体在复杂高维状态空间中的感知决策问题\cite{唐振韬2017深度强化学习进展}\cite{2017Deep}。2016年，基于深度强化学习和蒙特卡洛树搜索的AlphaGo击败了人类顶尖职业棋手，引起了全世界的关注\cite{2017Review}。 2017年, DeepMind在《Nature》上公布了最新版AlphaGo论文, 介绍了更强的围棋人工智能: AlphaGo Zero。它不需要人类专家知识, 只使用纯粹的深度强化学习技术和蒙特卡罗树搜索, 经过3天自我对弈就以100比0击败了上一版本的AlphaGo。AlphaGo Zero证明了深度强化学习的强大能力, 也必将推动以深度强化学习为代表的人工智能领域的进一步发展。基于深度强化学习在棋局与游戏上的成功，最近的研究大多注重于深度强化学习在各个领域中的扩展与应用。
 
-\textcolor{blue}{正文部分：宋体、小四；正文行距：22磅；间距段前段后均为0行。阅后删除此段。}
 
-\textcolor{blue}{图、表居中，图注标在图下方，表头标在表上方，宋体、五号、居中，1.25倍行距，间距段前段后均为0行，图表与上下文之间各空一行。阅后删除此段。}
 
-\textcolor{blue}{\underline{\underline{图-示例：（阅后删除此段）}}}
+\section{国内外研究现状}
 
-\begin{figure}[htbp]
-  \vspace{13pt} % 调整图片与上文的垂直距离
-  \centering
-  \includegraphics[]{images/bit_logo.png}
-  \caption{标题序号}\label{标题序号} % label 用来在文中索引
-\end{figure}
+\section{本文主要研究内容及章节安排}
 
-\textcolor{blue}{\underline{\underline{表-示例：（阅后删除此段）}}}
+% \subsection{三级题目}
 
-\begin{table}[htbp]
-  \linespread{1.5}
-  \zihao{5}
-  \centering
-  \caption{统计表}\label{统计表}
-  \begin{tabular}{*{5}{>{\centering\arraybackslash}p{2cm}}}
-    \hline
-    项目    & 产量    & 销量    & 产值   & 比重    \\ \hline
-    手机    & 1000  & 10000 & 500  & 50\%  \\
-    计算机   & 5500  & 5000  & 220  & 22\%  \\
-    笔记本电脑 & 1100  & 1000  & 280  & 28\%  \\ \hline
-    合计    & 17600 & 16000 & 1000 & 100\% \\ \hline
-    \end{tabular}
-\end{table}
+% 正文……\cite{Hajela2012Application}
 
-\textcolor{blue}{公式标注应于该公式所在行的最右侧。对于较长的公式只可在符号处（+、-、*、/、$\leqslant$ $\geqslant$ 等）转行。在文中引用公式时，在标号前加“式”，如式（1-2）。阅后删除此
-段。}
+% \begin{figure}[htbp]
+%   \vspace{13pt} % 调整图片与上文的垂直距离
+%   \centering
+%   \includegraphics[]{images/bit_logo.png}
+%   \caption{标题序号}\label{标题序号} % label 用来在文中索引
+% \end{figure}
 
-\textcolor{blue}{公式-示例：（阅后删除此段）}
-% 公式上下不要空行，置于同一个段落下即可，否则上下距离会出现高度不一致的问题
-\begin{equation}
-    LRI=1\ ∕\ \sqrt{1+{\left(\frac{{\mu }_{R}}{{\mu }_{s}}\right)}^{2}{\left(\frac{{\delta }_{R}}{{\delta }_{s}}\right)}^{2}}
-\end{equation}
+% \textcolor{blue}{\underline{\underline{表-示例：（阅后删除此段）}}}
 
-\subsubsection{生僻字}
+% \begin{table}[htbp]
+%   \linespread{1.5}
+%   \zihao{5}
+%   \centering
+%   \caption{统计表}\label{统计表}
+%   \begin{tabular}{*{5}{>{\centering\arraybackslash}p{2cm}}}
+%     \hline
+%     项目    & 产量    & 销量    & 产值   & 比重    \\ \hline
+%     手机    & 1000  & 10000 & 500  & 50\%  \\
+%     计算机   & 5500  & 5000  & 220  & 22\%  \\
+%     笔记本电脑 & 1100  & 1000  & 280  & 28\%  \\ \hline
+%     合计    & 17600 & 16000 & 1000 & 100\% \\ \hline
+%     \end{tabular}
+% \end{table}
 
-% 一个可能无法正常显示的生僻字
-一个可能无法正常显示的生僻字: 彧。下文注释中，介绍了如何通过自定义字体来显示生僻字。
+% \textcolor{blue}{公式标注应于该公式所在行的最右侧。对于较长的公式只可在符号处（+、-、*、/、$\leqslant$ $\geqslant$ 等）转行。在文中引用公式时，在标号前加“式”，如式（1-2）。阅后删除此
+% 段。}
 
-% 定义一个提供了生僻字的字体，注意要确保你的系统存在该字体
-% \setCJKfamilyfont{custom-font}{Noto Serif CJK SC}
+% \textcolor{blue}{公式-示例：（阅后删除此段）}
+% % 公式上下不要空行，置于同一个段落下即可，否则上下距离会出现高度不一致的问题
+% \begin{equation}
+%     LRI=1\ ∕\ \sqrt{1+{\left(\frac{{\mu }_{R}}{{\mu }_{s}}\right)}^{2}{\left(\frac{{\delta }_{R}}{{\delta }_{s}}\right)}^{2}}
+% \end{equation}
 
-% 使用自己定义的字体
-% 使用提供了相应字型的字体：\CJKfamily{custom-font}{彧}。
+% \subsubsection{生僻字}
+
+% % 一个可能无法正常显示的生僻字
+% 一个可能无法正常显示的生僻字: 彧。下文注释中，介绍了如何通过自定义字体来显示生僻字。
+
+% % 定义一个提供了生僻字的字体，注意要确保你的系统存在该字体
+% % \setCJKfamilyfont{custom-font}{Noto Serif CJK SC}
+
+% % 使用自己定义的字体
+% % 使用提供了相应字型的字体：\CJKfamily{custom-font}{彧}。
 

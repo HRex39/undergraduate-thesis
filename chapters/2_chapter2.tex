@@ -18,38 +18,60 @@
 % The Current Maintainer of this work is Feng Kaiyu.
 %%
 
-\chapter{另一个章节}
+\chapter{强化学习相关算法理论分析}
 
-\section{代码片段}
+\section{强化学习算法}
 
-\begin{lstlisting}[language=Python, caption={Python Code}, label={lst:pythonfile}]
-import numpy as np
+强化学习(Reinforcement Learning, RL)通过与环境交互，学习状态到行为的映射关系。如图\ref{强化学习原理}所示，在一个离散时间序列$t=0,1,2,… $中，智能体需要完成某项任务。在每一个时间$t$，智能体都能从环境中接受一个状态$S_t$，并通过动作$a_t$与环境继续交互，环境会产生新的状态$S_{t+1}$，同时给出一个立即回报$r_{t+1}$。如此循环下去，智能体与环境不断地交互，从而产生更多数据（状态和回报），并利用新的数据进一步改善自身的行为。
 
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
 
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1)
+\begin{figure}[htbp]
+  \vspace{13pt} % 调整图片与上文的垂直距离
+  \centering
+  \includegraphics[width=0.63\textwidth]{images/chapter2/RL_struction.png}
+  \caption{强化学习原理}\label{强化学习原理} % label 用来在文中索引
+\end{figure}
 
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
+\section{Q-learning算法}
 
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
+\section{DQN算法}
 
-                VT = np.zeros((n*m,1), int)
 
-    return M
-\end{lstlisting}
+\section{改进的DQN算法}
+
+\section{本章小结}
+
+
+% \section{代码片段}
+
+% \begin{lstlisting}[language=Python, caption={Python Code}, label={lst:pythonfile}]
+% import numpy as np
+
+% def incmatrix(genl1,genl2):
+%     m = len(genl1)
+%     n = len(genl2)
+%     M = None #to become the incidence matrix
+%     VT = np.zeros((n*m,1), int)  #dummy variable
+
+%     #compute the bitwise xor matrix
+%     M1 = bitxormatrix(genl1)
+%     M2 = np.triu(bitxormatrix(genl2),1)
+
+%     for i in range(m-1):
+%         for j in range(i+1, m):
+%             [r,c] = np.where(M2 == M1[i,j])
+%             for k in range(len(r)):
+%                 VT[(i)*n + r[k]] = 1;
+%                 VT[(i)*n + c[k]] = 1;
+%                 VT[(j)*n + r[k]] = 1;
+%                 VT[(j)*n + c[k]] = 1;
+
+%                 if M is None:
+%                     M = np.copy(VT)
+%                 else:
+%                     M = np.concatenate((M, VT), 1)
+
+%                 VT = np.zeros((n*m,1), int)
+
+%     return M
+% \end{lstlisting}
