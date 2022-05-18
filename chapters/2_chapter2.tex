@@ -79,7 +79,7 @@
 
 求解强化学习问题的目标是求解每个状态下的最优策略，即在运行过程中接收的累计回报最大。为了获取更高的回报，智能体在进行决策时要考虑立即回报，也要考虑后续状态的回报。解决强化学习问题一般需要两步，将实际场景抽象成一个数学模型，然后去求解这个数学模型，找到使得累计回报最大的解。
 
-第一步：构建强化学习的数学模型——马尔科夫决策（Markov Decision Process, MDP）模型。
+第一步：构建强化学习的数学模型——马尔科夫决策（Markov Decision Process, MDP）\cite{monahan1982state}模型。
 
 不论涉及的智能体结构、环境和交互细节多么复杂，此类交互问题都能简化为三个信号：智能体的行为、环境的状态、环境反馈的回报。具体到实验中，便是仿真环境根据智能体做出的行为产生的回报和改变的状态。马尔科夫决策模型可以有效表示实际的强化学习问题，这样解决强化学习问题的问题就转化为求解马尔科夫决策模型的最优解。
 
@@ -128,6 +128,7 @@ DQN（Deep Q-Network）算法是建立传统强化学习算法Q-learning的基�
 DQN神经网络结构是三个卷积层和两个全连接层。输入为经过处理的4个连续的84$\times$84的图像，经过卷积层和两个全连接层输出包含每一个动作的Q值向量。DQN网络将高维的状态输入转换为低维的动作输出，即将图像输入转换为动作输出。利用深度神经网络实现了数据的降维。
 
 \begin{figure}[htbp]
+    \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
     \includegraphics[width=0.73\textwidth]{images/chapter2/DQN_model.png}
     \caption{DQN神经网络结构}\label{DQN神经网络结构} % label 用来在文中索引
@@ -138,6 +139,7 @@ DQN神经网络结构是三个卷积层和两个全连接层。输入为经过�
 在使用深度神经网络进行行为值函数（Q值）近似时，如果不对训练数据做处理，直接将当前时刻的信息进行学习训练，学习效果会出现较大偏差。由于使用神经网络的前提是数据之间独立同分布，而强化学习过程中，数据是通过与环境交互产生的，相邻数据之间高度相关。如果智能体在很长一段时间均学习相同环境下的数据，在接收到另一环境的数据后，参数会出现不稳定与大范围波动发散，求解无法收敛。针对这一问题，DQN采用“经验回放”的方法进行解决。
 
 \begin{figure}[htbp]
+    \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
     \includegraphics[width=0.63\textwidth]{images/chapter2/Experience_Replay.png}
     \caption{经验回放}\label{经验回放} % label 用来在文中索引
@@ -226,6 +228,7 @@ Double DQN分别采用不同的值函数来实现动作选择和动作评估。�
 基于Baird的思想，将DQN用于竞争网络，就有了Dueling DQN算法的原理，图\ref{DuelingDQN网络结构}清晰地给出了Dueling DQN和DQN的网络结构差异。
 
 \begin{figure}[htbp]
+    \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
     \includegraphics[width=0.63\textwidth]{images/chapter2/Dueling_DQN.png}
     \caption{DuelingDQN网络结构}\label{DuelingDQN网络结构} % label 用来在文中索引
@@ -249,4 +252,4 @@ Dueling DQN将卷积层提取的抽象特征分流到两个支路上，两个支
 
 \section{本章小结}% 讲一下要用DQN、DDQN和Dueling DQN来干一些事情。
 
-本章介绍了强化学习算法的组成及其马尔科夫决策模型的求解，通过对基于值函数（Value Based）的Q-learning算法及DQN算法的详细分析，由于自动驾驶决策控制任务无法进行精确的“查表”预知，需要进行神经网络的拟合，故采取基于DQN及其改进算法Double DQN和Dueling DQN算法完成自动驾驶决策控制任务。同时，根据输入数据的抽象程度，下一章节将对三种DQN算法进行决策与控制方面的设计与探究，从而得到DQN及其改进型的对比实验效果。
+本章介绍了强化学习算法的组成及其马尔科夫决策模型的求解，通过对基于值函数（Value Based）的Q-learning算法及DQN算法的详细分析，由于自动驾驶决策控制任务无法进行精确的“查表”预知，需要进行神经网络的拟合，故采取基于DQN及其改进算法Double DQN和Dueling DQN算法完成自动驾驶决策控制任务。同时，根据输入数据的抽象程度，下一章节将对三种DQN算法进行决策与控制方面的设计与探究，从而得到DQN及其改进算法的对比实验效果。
