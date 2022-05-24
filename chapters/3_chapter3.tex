@@ -20,13 +20,11 @@
 
 \chapter{基于DQN算法的自动驾驶避障算法设计}
 
-在第2章的分析中，DQN、Double DQN和Dueling DQN能够完成自动驾驶决策控制任务，但对于网络数据的输入输出和复杂度并没有详细地进行分析。本章将结合Highway-Env与Metadrive两种仿真环境，设计决策器与控制器，分别探究在抽象的数据输入与具体的数据输入的情况下，DQN及其改进算法对自动驾驶车辆决策与控制任务的效果和不同算法作用下的对比实验，从而满足功能需求。
+在第2章的分析中，DQN、Double DQN和Dueling DQN能够完成自动驾驶决策控制任务。本章将结合Highway-Env与Metadrive两种仿真环境，设计决策器与控制器，分别探究在抽象的数据输入与具体的数据输入的情况下，DQN及其改进算法对自动驾驶车辆决策与控制任务的效果和不同算法作用下的对比实验，从而满足功能需求。
 
 \section{基于DQN算法的决策器设计}\label{3.1基于DQN算法的决策器设计} % 3.1 决策任务
 
 \subsection{仿真环境}\label{3.1.1仿真环境}
-
-\subsubsection{Highway-Env}
 
 Highway-Env是一个用于自动驾驶决策的最小仿真环境\cite{highway-env}，它包含了自动驾驶决策任务的环境集合。对强化学习而言，Highway-Env包含了强化学习所需要的状态（state）、动作（action）和奖惩值（reward）设计。Highway-Env的仿真效果如图\ref{highway-env}所示，在这项任务中，自我车辆（ego-vehicle）正在一条多车道高速公路上行驶，该高速公路上存在其他车辆。智能体的目标是在避免与邻近车辆发生碰撞的同时达到高速，将车辆保持在最下方的道路行驶也会获得奖励。
 
@@ -134,8 +132,6 @@ DQN算法输入的是连续的状态，输出的是离散的动作。由于考�
 
 \subsection{仿真环境}
 
-\subsubsection{Metadrive}
-
 \begin{table}[htbp]
     % \vspace{13pt} % 调整图片与上文的垂直距离
     \caption{仿真模拟器对比}\label{仿真模拟器对比}
@@ -158,7 +154,7 @@ Metadrive的仿真效果如图\ref{metadrive}，相较于Highway-Env，它提供
     \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
     \includegraphics[width=0.73\textwidth]{images/chapter3/metadrive.png}%change
-    \caption{metadrive}\label{metadrive} % label 用来在文中索引
+    \caption{metadrive仿真界面}\label{metadrive} % label 用来在文中索引
 \end{figure}  
 
 \subsubsection{Metadrive的状态值设计}
@@ -177,7 +173,7 @@ Metadrive提供一个状态向量，其中包含车辆导航任务所需的信�
 
 传感器信息设置为灰度相机的图像输入，周围信息通过$80\times80$的图像获取。针对于DQN算法，采用4帧$80\times80$的灰度图作为输入，这一部分包含了$4\times80\times80$个数据。
 
-以上三部分数据在输入时都进行了标准化处理，都以$[-1,1]$为区间进行了转换。
+以上三部分数据在输入时都进行了归一化处理，都以$[0,1]$为区间进行了转换。
 
 \subsubsection{Metadrive的动作值设计}
 

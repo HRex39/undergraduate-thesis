@@ -89,7 +89,7 @@
 
 \section{Q-learning算法} % 先讲时序差分TD，再讲Q-learning。
 
-在介绍Q-learning算法之前，首先对时序差分方法进行简单的介绍。时序差分学习最早由A.Summuel在跳棋算法中提出，1988年，Sutton证明了时序差分方法在最小均方误差（MSE）上的收敛性\cite{1998Reinforcement}，之后时序差分方法被广泛应用在无法产生完整轨迹的无模型强化学习问题上。时序差分（TD）方法是无模型方法，无法获得当前状态的所有后续状态及回报，仅能通过采样学习轨迹片段，用下一状态的预估状态价值更新当前的状态价值。
+在介绍Q-learning算法之前，首先对时序差分方法进行简单的介绍。时序差分学习最早由A.Summuel在跳棋算法中提出，1988年，Sutton证明了时序差分方法在最小均方误差（Mean Square Error, MSE）上的收敛性\cite{1998Reinforcement}，之后时序差分方法被广泛应用在无法产生完整轨迹的无模型强化学习问题上。时序差分（TD）方法是无模型方法，无法获得当前状态的所有后续状态及回报，仅能通过采样学习轨迹片段，用下一状态的预估状态价值更新当前的状态价值。
 
 Q-learning算法属于离线策略时序差分（TD）问题，最早由Watkins和Dayan在1992年提出\cite{1992Technical}，其任务是通过不断地学习，不断的更新状态-动作值函数$Q(s,a)$，从而得出最优策略。根据\ref{强化学习算法}节中所提到的，求解强化学习问题的目标是求解每个状态下的最优策略，Q-learning算法在更新一个状态-动作值函数（以下简称Q值）时，采用的不是遵循当前策略（行为策略$\mu$）的下一个状态-动作对的Q值，而是待评估策略（目标策略$\pi$）产生的下一个状态-动作对的Q值。更新公式如下：
 \begin{equation}\label{Q-learning}
@@ -131,7 +131,7 @@ DQN神经网络结构是三个卷积层和两个全连接层。输入为经过�
     \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
     \includegraphics[width=0.73\textwidth]{images/chapter2/DQN_model.png}
-    \caption{DQN神经网络结构}\label{DQN神经网络结构} % label 用来在文中索引
+    \caption{DQN神经网络结构\cite{2013DQN}}\label{DQN神经网络结构} % label 用来在文中索引
 \end{figure}
 
 （2）DQN使用经历回放训练强化学习。
