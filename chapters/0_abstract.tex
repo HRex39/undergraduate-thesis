@@ -37,9 +37,13 @@
 \setlength{\parskip}{0em}
 
 % 中文摘要正文从这里开始
-自动驾驶系统保证了快捷、安全、高效的驾驶体验，实现自动驾驶避障需要自动驾驶决策和控制系统的紧密配合。随着近些年硬件系统和软件算法的提升，自动驾驶系统在决策和控制方面的安全性和稳定性越来越受到广泛的关注。自动驾驶决策和控制系统的设计涵盖自动化技术、传感器技术、智能控制技术，也是人工智能和机器学习的重要应用领域。一贯以来，实现自动驾驶的决策和控制系统需要构建大量的数学模型，依靠人工设计的算法从复杂环境中提取关键信息，因此降低自动驾驶决策和控制系统的复杂度一直是自动驾驶领域研究的重点方向之一。强化学习通过不断探索环境自主学习复杂的控制模型，深度学习与强化学习相结合形成的深度强化学习方法可实现端到端的决策与控制，逐渐成为自动驾驶领域的研究热点。
+自动驾驶系统保证了快捷、安全、高效的驾驶体验，实现自动驾驶避障需要自动驾驶决策和控制系统的紧密配合。强化学习通过不断探索环境，自主学习复杂的控制模型，深度学习与强化学习相结合形成的深度强化学习方法可实现端到端的决策与控制，逐渐成为自动驾驶领域的研究热点。本文以实现端到端的自动驾驶决策器和控制器作为研究目标，围绕两种不同复杂度的仿真环境，针对DQN及其改进算法搭建神经网络模型开展了相关技术研究，主要研究内容如下：
 
-本文以实现端到端的自动驾驶决策器和控制器为研究目标，围绕两种不同复杂度的仿真环境，针对DQN及其改进算法搭建神经网络模型，验证实现了基于DQN及其改进算法的自动驾驶决策器和控制器，并就DQN及其改进算法开展了较为深入的研究。
+（1）针对强化学习的相关算法选择，第2章通过对强化学习算法原理的分析，引出了适用于无模型的 Q-learning 算法和 DQN 算法，针对于DQN算法的不足和缺陷，介绍了Double DQN算法和Dueling DQN算法的原理，并对DQN及其改进算法的适用场景进行了分析。
+
+（2）针对自动驾驶避障算法，第3章完成了自动驾驶决策器与控制器的算法设计。通过对两种仿真环境（Highway-Env、Metadrive）状态值、动作值与奖励函数的对比与分析，设计了DQN及其改进算法的网络结构及超参数，对自动驾驶决策器与控制器的学习过程进行分析，使其完成自动驾驶决策和控制两方面的任务要求。
+
+（3）针对实验验证，第4章进行了两种仿真环境中决策器与控制器的实验，验证了提出的自动驾驶避障算法的可行性和有效性，并对具体的实验内容进行了设计，对最终的实验结果进行了详细的分析与改进。
 
 实验结果表明，本文设计实现的基于DQN及其改进算法的自动驾驶决策器和控制器均满足实验要求，达到了预期的控制效果，能够有效提高自动驾驶车辆在决策和控制中的鲁棒性。对于较为简单的网络结构，DQN特别是Double DQN算法由于其改进的动作选择和评估方法，能够获得更加稳定有效的行为策略。本文的成果为自动驾驶决策器和控制器的研究提供了借鉴和参考，也为复杂动力学模型问题的解决提供了新的思路和方法。
 
@@ -65,9 +69,13 @@
 \setlength{\parskip}{0em}
 
 % 英文摘要正文从这里开始
-The Automatic Driving System ensures a fast, safe and efficient driving experience. The implementation of Automatic Driving Obstacle Avoidance requires the cooperation of the decision-making and control system of Automatic Driving. As the hardware and software improves, the safety and stability of such systems have received more attention. The design of these systems involves Automation Technology, Sensor Technology, Intelligent Control Technology, which is also an important field of Artificial Intelligence and Machine Learning. It has always been necessary to build a large number of mathematical models to realize such systems, which also rely on artificially designed algorithms to extract key information from complex environments. Therefore, reducing the complexity of these systems has always been the focus of research in the field of Autonomous Driving. Reinforcement Learning learns complex control models autonomously by exploring the environment continuously. The Deep Reinforcement Learning method, formed by the combination of Deep Learning and Reinforcement Learning,  can realize end-to-end decision-making and control, and has gradually become a research hotspot in the field of Autonomous Driving.
+The Automatic Driving System ensures a fast, safe and efficient driving experience. The implementation of Automatic Driving Obstacle Avoidance requires the cooperation of the decision-making and control system of Automatic Driving. Reinforcement Learning learns complex control models autonomously by exploring the environment continuously. The Deep Reinforcement Learning method, formed by the combination of Deep Learning and Reinforcement Learning,  can realize end-to-end decision-making and control, and has gradually become a research hotspot in the field of Autonomous Driving. This work aims to implement the end-to-end Autonomous Driving decision maker and controller. Focusing on two simulation environments with different complexity, a neural network model is built for DQN and its improved algorithms. The performance is verified. The main research contents are as follows:
 
-This work aims to implement the end-to-end Autonomous Driving decision maker and controller. Focusing on two simulation environments with different complexity, a neural network model is built for DQN and its improved algorithms. The performance is verified. This paper also conducts more in-depth research on DQN and its improved algorithms. 
+(1) For the selection of relevant algorithms for Reinforcement Learning, the second chapter analyses the principle of Reinforcement Learning algorithm, introduces the Q-learning algorithm and DQN algorithm suitable for model-free. In view of the shortcomings and defects of DQN algorithm, the principles of Double DQN algorithm and Dueling DQN algorithm are introduced, and the applicable scenarios of DQN and its improved algorithm are analyzed.
+
+(2) For the Automatic Driving Obstacle Avoidance algorithm, the third chapter completes the algorithm design of the Automatic Driving decision maker and controller. Through the comparison and analysis of the state value, action value and reward function of the two simulation environments (Highway-Env, Metadrive), the network structure and hyperparameters of DQN and its improved algorithm are designed. 
+
+(3) For the experimental verification, the fourth chapter conducts experiments on the decision maker and controller in two simulation environments, verifies the feasibility and effectiveness of the proposed Automatic Driving Obstacle Avoidance algorithm, the final experimental results are analyzed and improved in detail.
 
 The experimental results show that the Autonomous Driving decision maker and controller based on DQN and its improved algorithms designed and implemented in this paper meet the experimental requirements, achieve the expected control effect, and can effectively improve the robustness of autonomous driving vehicles in decision-making and control. For simpler network structures, DQN, especially the Double DQN algorithm, can obtain more stable and effective behavior strategies due to its improved action selection and evaluation methods. The results of this paper provide reference for the research of Automatic Driving decision maker and controller, and also provide new ideas and methods for solving complex dynamic model problems.
 
