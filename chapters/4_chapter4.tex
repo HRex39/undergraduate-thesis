@@ -34,7 +34,7 @@
     \renewcommand\arraystretch{1.5}
     \setlength{\tabcolsep}{7mm}{
     \begin{tabular}{cc}
-    \hline
+    \toprule %添加表格头部粗线
     参数                & 参数值    \\ \hline
     学习率$\alpha$       & 1e-3   \\
     折扣因子$\gamma$      & 0.9    \\
@@ -42,7 +42,8 @@
     TD网络更新步数$N$       & 1000   \\
     经验回放库$D$          & 2000   \\
     经验回放库抽取批次$batch$  & 32     \\
-    训练回合数$episode$    & 24000 \\ \hline
+    训练回合数$episode$    & 24000 \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
     }
 \end{table}
@@ -82,7 +83,7 @@
 
 \subsubsection{基于DQN算法的决策器收敛性}
 
-在验证DQN算法的效果前，需要判定DQN算法的收敛性。图\ref{DQN算法的Loss}表示的是整个训练过程中损失函数Loss的变化，此处以参数每更新10万次进行采样，损失函数Loss的值在0.02以下，而图\ref{DQN算法的Q值}显示的是DQN算法的Q值，在2万次的训练次数后总体趋近于8.5的区间内。
+在验证DQN算法的效果前，需要判定DQN算法的收敛性。图\ref{DQN算法的Loss}表示的是整个训练过程中损失函数Loss的变化，横轴表示训练次数，纵轴表示根据奖励函数得到的奖励值，此处以参数每更新10万次进行采样，损失函数Loss的值在0.02以下，而图\ref{DQN算法的Q值}显示的是DQN算法的Q值，在2万次的训练次数后总体趋近于8.5的区间内。
 
 \begin{figure}[htbp]
     \vspace{13pt}
@@ -107,7 +108,7 @@
 
 \subsection{基于DQN及其改进算法的决策器对比实验}
 
-本实验验证了基于DQN、Double DQN和Dueling DQN算法的自动驾驶决策器，图\ref{DQN算法及其改进算法的收敛性对比}表示了三种算法的收敛性对比，其中红、蓝、橙三色曲线分别代表DQN、Double DQN、Dueling DQN的输出收敛情况。
+本实验验证了基于DQN、Double DQN和Dueling DQN算法的自动驾驶决策器，图\ref{DQN算法及其改进算法的收敛性对比}表示了三种算法的收敛性对比，其中红、蓝、橙三色曲线分别代表DQN、Double DQN、Dueling DQN的输出收敛情况。横轴表示训练次数，纵轴表示根据奖励函数得到的奖励值。
 
 \begin{figure}[htbp]
     \vspace{13pt}
@@ -162,7 +163,7 @@
     \renewcommand\arraystretch{1.5}
     \setlength{\tabcolsep}{7mm}{
     \begin{tabular}{cc}
-    \hline
+    \toprule %添加表格头部粗线
     参数                & 参数值    \\ \hline
     学习率$\alpha$       & 1e-3   \\
     折扣因子$\gamma$      & 0.9    \\
@@ -170,7 +171,8 @@
     TD网络更新步数$N$       & 1000   \\
     经验回放库$D$          & 50000   \\
     经验回放库抽取批次$batch$  & 32     \\
-    训练回合数$episode$    & 100000 \\ \hline
+    训练回合数$episode$    & 100000 \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
     }
 \end{table}
@@ -256,7 +258,7 @@
     \caption{DQN算法及其改进算法的控制器对比实验}\label{DQN算法及其改进算法的控制器对比实验} 
 \end{figure}
 
-由图\ref{metadriveEpr}和图\ref{metadriveAver}可知，Double DQN每回合得到的奖励值输出最高，平均动作奖励值也最高，这印证了\ref{4.1基于DQN算法的决策器实验}节中对Double DQN算法在动作选择和动作评估方面的分析，在更加复杂的环境中，Double DQN采取的网络参数更新策略避免选到被高估的次优行为，相对于最大化操作的值函数更新具有更加明显优势。
+由图\ref{metadriveEpr}和图\ref{metadriveAver}可知，横轴表示训练次数，纵轴表示根据奖励函数得到的奖励值。Double DQN每回合得到的奖励值输出最高，平均动作奖励值也最高，这印证了\ref{4.1基于DQN算法的决策器实验}节中对Double DQN算法在动作选择和动作评估方面的分析，在更加复杂的环境中，Double DQN采取的网络参数更新策略避免选到被高估的次优行为，相对于最大化操作的值函数更新具有更加明显优势。
 
 在\ref{4.1基于DQN算法的决策器实验}节中每回合奖励值输出函数最高的Dueling DQN算法在存在更加复杂输入的Metadrive仿真环境中表现不佳，一方面的原因是其两个支路所采用的全连接层结构较为简单，无法综合状态值函数$V(s)$和优势值函数$A(s,a)$使其满足自动驾驶车道保持和循迹的任务要求；另一方面的原因是其采用最大化操作的网络参数更新策略，存在选到被高估的次优行为的概率。
 

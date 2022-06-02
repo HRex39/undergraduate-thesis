@@ -47,14 +47,15 @@ Highway-Env是一个用于自动驾驶决策的最小仿真环境\cite{highway-e
     \centering
     \renewcommand\arraystretch{1.5}
     \setlength{\tabcolsep}{7mm}{
-    \begin{tabular}{|c|cccc|}
-    \hline
-    Vehicle     & \multicolumn{1}{c|}{$x$}  & \multicolumn{1}{c|}{$y$}  & \multicolumn{1}{c|}{$v_x$} & $v_y$ \\ \hline
-    ego-vehicle & \multicolumn{1}{c|}{$x_{ego}$}   & \multicolumn{1}{c|}{$y_{ego}$}   & \multicolumn{1}{c|}{$v_{xego}$}      &  $v_{yego}$     \\ \hline
-    vehicle 1   & \multicolumn{1}{c|}{$x_1$} & \multicolumn{1}{c|}{$y_1$} & \multicolumn{1}{c|}{$v_{x1}$}   & $v_{y1}$   \\ \hline
-    vehicle 2   & \multicolumn{1}{c|}{$x_2$} & \multicolumn{1}{c|}{$y_2$} & \multicolumn{1}{c|}{$v_{x2}$}   & $v_{y2}$   \\ \hline
-    $\dots$     & \multicolumn{4}{c|}{$\dots$}                                                           \\ \hline
-    vehicle n   & \multicolumn{1}{c|}{$x_n$} & \multicolumn{1}{c|}{$y_n$} & \multicolumn{1}{c|}{$v_{xn}$}   & $v_{yn}$   \\ \hline
+    \begin{tabular}{ccccc}
+    \toprule %添加表格头部粗线
+    Vehicle     & \multicolumn{1}{c}{$x$}  & \multicolumn{1}{c}{$y$}  & \multicolumn{1}{c}{$v_x$} & $v_y$ \\ \hline
+    ego-vehicle & \multicolumn{1}{c}{$x_{ego}$}   & \multicolumn{1}{c}{$y_{ego}$}   & \multicolumn{1}{c}{$v_{xego}$}      &  $v_{yego}$     \\ 
+    vehicle 1   & \multicolumn{1}{c}{$x_1$} & \multicolumn{1}{c}{$y_1$} & \multicolumn{1}{c}{$v_{x1}$}   & $v_{y1}$   \\ 
+    vehicle 2   & \multicolumn{1}{c}{$x_2$} & \multicolumn{1}{c}{$y_2$} & \multicolumn{1}{c}{$v_{x2}$}   & $v_{y2}$   \\ 
+    $\dots$     & \multicolumn{4}{c}{$\dots$}                                                           \\ 
+    vehicle n   & \multicolumn{1}{c}{$x_n$} & \multicolumn{1}{c}{$y_n$} & \multicolumn{1}{c}{$v_{xn}$}   & $v_{yn}$   \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
     }
 \end{table}
@@ -69,10 +70,11 @@ DQN算法输入的是连续的状态，输出的是离散的动作。由于考�
     \centering
     \renewcommand\arraystretch{1.5}
     \setlength{\tabcolsep}{7mm}{
-    \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
+    \begin{tabular}{cccccc}
+    \toprule %添加表格头部粗线
     index  & 0  & 1  & 2  & 3  & 4  \\ \hline
-    Action & 左转 & 保持 & 右转 & 加速 & 减速 \\ \hline
+    Action & 左转 & 保持 & 右转 & 加速 & 减速 \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
     }
 \end{table}
@@ -137,12 +139,13 @@ DQN算法输入的是连续的状态，输出的是离散的动作。由于考�
     \caption{仿真模拟器对比}\label{仿真模拟器对比}
     \centering
     \renewcommand\arraystretch{1.5}
-    \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
+    \begin{tabular}{cccccc}
+    \toprule %添加表格头部粗线
     Simulator   & 车辆动力学        & 多智能体       & 雷达、相机       & 真实数据导入       & 轻量级          \\ \hline
-    CARLA\cite{Dosovitskiy17}       & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\ \hline
-    Metadrive\cite{li2021metadrive}   & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\ \hline
-    Highway-Env\cite{highway-env} &              &              &              &              & $\checkmark$ \\ \hline
+    CARLA\cite{Dosovitskiy17}       & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\ 
+    Metadrive\cite{li2021metadrive}   & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\ 
+    Highway-Env\cite{highway-env} &              &              &              &              & $\checkmark$ \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
 \end{table}
 
@@ -217,13 +220,15 @@ $R_{speed} = v_t / v_{max}$，$v_t$和$v_{max}$表示当前速度与最大速度
 
 $R_{termination}$是一组离散的奖惩函数，其包含了几种智能体可能的情况：
 \begin{table}[htbp]
-    \vspace{13pt}
+    % \vspace{13pt}
+    \caption{Metadrive离散奖惩函数}\label{Metadrive离散奖惩函数}
     \centering
     \renewcommand\arraystretch{1.5}
-    \begin{tabular}{|c|c|c|c|c|}
-    \hline
+    \begin{tabular}{ccccc}
+    \toprule %添加表格头部粗线
     state & 车辆到达目的地 & 车辆驶出道路 & 车辆与其他车辆相撞 & 车辆撞到障碍物 \\ \hline
-    cost  & +10.0   & -5.0   & -5.0      & -5.0    \\ \hline
+    cost  & +10.0   & -5.0   & -5.0      & -5.0    \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
 \end{table}
 
@@ -244,12 +249,13 @@ Metadrive的状态量包括车身状态、导航信息和传感器信息，针�
     \centering
     \renewcommand\arraystretch{1.5}
     \setlength{\tabcolsep}{7mm}{
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    steering & -0.5 & 0 & 1   \\ \hline
+    \begin{tabular}{cccc}
+    \toprule %添加表格头部粗线
+    steering & -0.5 & 0 & 1   \\ 
     index    & 0    & 1 & 2   \\ \hline
-    throttle & -0.5 & 0 & 0.5 \\ \hline
-    index    & 0    & 1 & 2   \\ \hline
+    throttle & -0.5 & 0 & 0.5 \\ 
+    index    & 0    & 1 & 2   \\ 
+    \bottomrule %添加表格底部粗线
     \end{tabular}
     }
 \end{table}

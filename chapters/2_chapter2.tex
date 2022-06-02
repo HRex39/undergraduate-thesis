@@ -141,7 +141,7 @@ DQN神经网络结构是三个卷积层和两个全连接层。输入为经过�
 \begin{figure}[htbp]
     \vspace{13pt} % 调整图片与上文的垂直距离
     \centering
-    \includegraphics[width=0.63\textwidth]{images/chapter2/Experience_Replay.png}
+    \includegraphics[width=0.53\textwidth]{images/chapter2/Experience_Replay.png}
     \caption{经验回放}\label{经验回放} % label 用来在文中索引
 \end{figure}
 
@@ -154,7 +154,7 @@ DQN神经网络结构是三个卷积层和两个全连接层。输入为经过�
     \theta_{t+1} = \theta_t + \alpha (r + \gamma \max_{a^{'}} Q(s^{'}, a^{'}; \theta_t) - Q(s, a; \theta_t))\nabla   Q(s, a; \theta_t)
 \end{equation*}
 
-但如（2）中提及，行为值函数（$Q(s, a; \theta_t)$）和TD目标值函数（$r + \gamma \max_{a^{'}} Q(s^{'}, a^{'}; \theta_t)$）产生的数据需要避免关联性。为解决上述问题，DQN引入两个神经网络，一个网络固定参数专门用来产生TD目标，称为TD网络。另一个网络专门用来评估策略更新函数，逼近值函数，称为行为值函数（Q值）逼近网络。两个网络参数的更新速率不一致，用于行为值函数（Q值）逼近的网络参数每一步都更新；用于计算TD目标值的网络参数每隔固定的步数更新一次，期间保证不变。于是得到以下DQN网络的更新公式：
+但如（2）中提及，行为值函数（$Q(s, a; \theta_t)$）和TD目标值函数（$r + \gamma \max_{a^{'}} Q(s^{'}, a^{'}; \theta_t)$）产生的数据需要避免关联性。为解决上述问题，DQN引入两个神经网络，一个网络固定参数专门用来产生TD目标，称为TD网络。另一个网络专门用来评估策略更新函数，逼近值函数，称为行为值函数（Q值）逼近网络。两个网络参数的更新速率不一致，用于行为值函数（Q值）逼近的网络参数每一步都更新；用于计算TD目标值的网络参数每隔固定的步数更新一次，期间保证不变，得到以下DQN网络的更新公式。
 \begin{equation}\label{DQN}
     \theta_{t+1} = \theta_t + \alpha (r + \gamma \max_{a^{'}} Q(s^{'}, a^{'}; \theta_t^{-}) - Q(s, a; \theta_t))\nabla   Q(s, a; \theta_t)
 \end{equation}
@@ -238,7 +238,7 @@ Dueling DQN将卷积层提取的抽象特征分流到两个支路上，两个支
 \begin{equation*}
     Q(s,a;\alpha,\beta) = V(s;\beta) + A(s,a;\alpha)
 \end{equation*}
-但此式存在一个无法识别的问题，在确定的Q下，V和A有无数可能，故需要对A值做出限定，强制令所有选择贪婪动作的优势函数为0（认为没有比选择贪婪动作的方法更优的选项了）。添加约束条件，此时Dueling DQN的行为值函数为：
+但此式存在一个无法识别的问题，在确定的Q下，V和A有无数可能，故需要对A值做出限定，强制令所有选择贪婪动作的优势函数为0（认为没有比选择贪婪动作的方法更优的选项了）。添加约束条件，此时Dueling DQN的行为值函数为
 \begin{equation}
     Q(s,a;\alpha,\beta) = V(s;\beta) + A(s,a;\alpha) - \max_{a^{'} \in A}A(s,a^{'};\alpha)
 \end{equation}
